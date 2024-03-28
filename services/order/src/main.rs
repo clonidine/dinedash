@@ -1,6 +1,8 @@
 use axum::{routing::get, Router};
 use tokio::net::TcpListener;
 
+pub mod model;
+
 #[tokio::main]
 async fn main() -> std::io::Result<()> {
     let address = "0.0.0.0";
