@@ -1,11 +1,18 @@
-use actix_web::{web, App, HttpResponse, HttpServer};
+use axum::{routing::get, Router};
+use tokio::net::TcpListener;
 
 #[tokio::main]
-async fn main() -> std::io::Result<()> {
-    let addr = ("127.0.0.1", 8000);
-    println!("Server running on {}:{}", addr.0, addr.1);
-    HttpServer::new(|| App::new().route("/", web::get().to(HttpResponse::Ok)))
-        .bind(addr)?
-        .run()
-        .await
+async fn main() -> anyhow::Result<()> {
+    let address = "0.0.0.0";
+    let port = "8000";
+
+    let app = Router::new().route("/", get(|| async { "Hello!" }));
+
+    let listener = TcpListener::bind(format!("{}:{}", address, port)).await?;
+
+    println!("Server running at {address}:{port}");
+
+    axum::serve(listener, app).await?;
+
+    Ok(())
 }
