@@ -2,7 +2,7 @@ use axum::{routing::get, Router};
 use tokio::net::TcpListener;
 
 #[tokio::main]
-async fn main() -> anyhow::Result<()> {
+async fn main() -> std::io::Result<()> {
     let address = "0.0.0.0";
     let port = "8000";
 
