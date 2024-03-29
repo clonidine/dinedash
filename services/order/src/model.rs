@@ -2,21 +2,21 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Order {
+pub struct Order<'a> {
     id: Uuid,
     cart_id: Uuid,
     status: OrderStatus,
-    description: Option<String>,
+    description: Option<&'a str>,
 }
 
-#[derive(Serialize, Deserialize, Clone, Copy, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 pub enum OrderStatus {
     Pendent,
     Cancelled,
     Approved,
 }
 
-impl Order {
+impl<'a> Order<'a> {
     pub fn new(cart_id: Uuid) -> Self {
         Self {
             id: Uuid::new_v4(),
@@ -26,18 +26,15 @@ impl Order {
         }
     }
 
-    pub fn description(&self, description: &str) -> Self {
-        Self {
-            description: Some(description.to_string()),
-            ..*self
-        }
+    pub fn description(mut self, description: &'a str) -> Self {
+        self.description = Some(description);
+
+        self
     }
 
-    pub fn status(&mut self, status: OrderStatus) -> Self {
-        Self {
-            status,
-            description: self.description.take(),
-            ..*self
-        }
+    pub fn status(mut self, status: OrderStatus) -> Self {
+        self.status = status;
+
+        self
     }
 }
