@@ -9,7 +9,7 @@ pub struct Order<'a> {
     description: Option<&'a str>,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Copy, Clone)]
 pub enum OrderStatus {
     Pendent,
     Cancelled,
@@ -26,15 +26,14 @@ impl<'a> Order<'a> {
         }
     }
 
-    pub fn description(mut self, description: &'a str) -> Self {
-        self.description = Some(description);
-
-        self
+    pub fn description(self, description: &'a str) -> Self {
+        Self {
+            description: Some(description),
+            ..self
+        }
     }
 
-    pub fn status(mut self, status: OrderStatus) -> Self {
-        self.status = status;
-
-        self
+    pub fn status(self, status: OrderStatus) -> Self {
+        Self { status, ..self }
     }
 }
