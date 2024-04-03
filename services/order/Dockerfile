@@ -6,14 +6,14 @@ FROM rust:1.68-alpine AS build
 RUN apk add musl-dev
 WORKDIR /app
 COPY . .
-RUN cargo build --release
+RUN cargo build --profile release-optimized
 
 # -----------------
 # Runtime Stage
 # -----------------
 
-FROM alpine:3.19.1
+FROM scratch
 WORKDIR /app
-COPY --from=build /app/target/release/order .
+COPY --from=build /app/target/release-optimized/order .
 EXPOSE 8000
 CMD ["/app/order"]
