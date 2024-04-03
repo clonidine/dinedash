@@ -15,3 +15,8 @@ uuid = { version = "1.8.0", features = [
     "macro-diagnostics",
     "serde",
 ] }
+
+[profile.release-optimized]
+inherits = "release"
+lto = true
+strip = "symbols"
