@@ -1,5 +1,23 @@
 version: "3.9"
 
 services:
-  order-service:
-    build: "./services/order"
+  order:
+    restart: always
+    build: "services/order"
+    ports:
+      - "8000:8000"
+    networks:
+      - food-delivery-network
+    depends_on:
+      - order-cache
+
+  order-cache:
+    image: redis:alpine
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - food-delivery-network
+
+networks:
+  food-delivery-network:
