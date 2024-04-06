@@ -15,7 +15,7 @@ const POOL_MAX_CONNECTIONS: u64 = 5;
 ///
 /// # Returns
 ///
-/// A `std::io::Result` containing the result of starting the server.
+/// A `core::result::Result` containing the result of starting the server.
 pub async fn start(address: &str) -> anyhow::Result<()> {
     let manager = RedisConnectionManager::new(Client::open(redis::SERVER_ADDR)?);
 
