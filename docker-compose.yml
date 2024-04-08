@@ -3,7 +3,7 @@ version: "3.9"
 services:
   order:
     restart: always
-    build: "services/order"
+    build: "crates/dinedash-order"
     ports:
       - "8000:8000"
     networks:

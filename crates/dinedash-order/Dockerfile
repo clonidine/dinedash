@@ -14,6 +14,6 @@ RUN cargo build --profile release-optimized
 
 FROM scratch
 WORKDIR /app
-COPY --from=build /app/target/release-optimized/order .
+COPY --from=build /app/target/release-optimized/dinedash-order .
 EXPOSE 8000
-CMD ["/app/order"]
+CMD ["/app/dinedash-order"]
