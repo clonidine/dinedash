@@ -4,6 +4,10 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+thiserror = "1.0.58"
+anyhow = "1.0.81"
+tokio = { version = "1.36.0", features = ["rt", "macros", "rt-multi-thread"] }
+axum = "0.7.5"
 
 [profile.release-optimized]
 inherits = "release"

@@ -156,22 +156,52 @@ dependencies = [
 [[package]]
 name = "dinedash-auth"
 version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "axum",
+ "thiserror",
+ "tokio",
+]
 
 [[package]]
 name = "dinedash-customer"
 version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "axum",
+ "thiserror",
+ "tokio",
+]
 
 [[package]]
 name = "dinedash-payment"
 version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "axum",
+ "thiserror",
+ "tokio",
+]
 
 [[package]]
 name = "dinedash-restaurant"
 version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "axum",
+ "thiserror",
+ "tokio",
+]
 
 [[package]]
 name = "dinedash-security"
 version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "axum",
+ "thiserror",
+ "tokio",
+]
 
 [[package]]
 name = "fnv"
