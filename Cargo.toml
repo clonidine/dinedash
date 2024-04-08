@@ -1,4 +1,11 @@
 [workspace]
 resolver = "2"
 
-members = ["common","services/order"]
+members = [
+    "crates/dinedash-auth",
+    "crates/dinedash-customer",
+    "crates/dinedash-order",
+    "crates/dinedash-payment",
+    "crates/dinedash-restaurant",
+    "crates/dinedash-security",
+]
