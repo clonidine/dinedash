@@ -8,6 +8,14 @@ thiserror = "1.0.58"
 anyhow = "1.0.81"
 tokio = { version = "1.36.0", features = ["rt", "macros", "rt-multi-thread"] }
 axum = "0.7.5"
+serde = { version = "1.0.197", features = ["derive"] }
+serde_json = "1.0.115"
+uuid = { version = "1.8.0", features = [
+    "v4",
+    "fast-rng",
+    "macro-diagnostics",
+    "serde",
+] }
 
 [profile.release-optimized]
 inherits = "release"
