@@ -15,5 +15,5 @@ RUN cargo build --profile release-optimized
 FROM scratch
 WORKDIR /app
 COPY --from=build /app/target/release-optimized/dinedash-customer .
-EXPOSE 8001
+EXPOSE 9000
 CMD ["/app/dinedash-customer"]

@@ -18,7 +18,7 @@ services:
     restart: always
     build: "crates/dinedash-customer"
     ports:
-      - "8001:8001"
+      - "9000:9000"
     networks:
       - food-delivery-network
     depends_on:
