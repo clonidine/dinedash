@@ -9,3 +9,6 @@ members = [
     "crates/dinedash-restaurant",
     "crates/dinedash-security",
 ]
+
+[unstable]
+incremental-unify = true

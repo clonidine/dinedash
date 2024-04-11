@@ -1,5 +1,8 @@
 version: "3.9"
 
+include:
+  - common.yaml
+
 services:
   order:
     restart: always
@@ -11,22 +14,16 @@ services:
     depends_on:
       - order-cache
       - order-db
-
-  order-cache:
-    image: redis:alpine
+  customer:
     restart: always
+    build: "crates/dinedash-customer"
     ports:
-      - "6379:6379"
+      - "8001:8001"
     networks:
       - food-delivery-network
-
-  order-db:
-    image: postgres:9.5.10
-    restart: always
-    ports:
-      - "5432:5432"
-    networks:
-      - food-delivery-network
+    depends_on:
+      - customer-cache
+      - customer-db
 
 networks:
   food-delivery-network:

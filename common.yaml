@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  customer-cache:
+    image: redis:alpine
+    restart: always
+    ports:
+      - "6380:6380"
+    networks:
+      - food-delivery-network
+
+  customer-db:
+    image: postgres:9.5.10
+    restart: always
+    ports:
+      - "5432:5432"
+    networks:
+      - food-delivery-network
+    environment:
+      POSTGRES_PASSWORD: example
+
+  order-cache:
+    image: redis:alpine
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - food-delivery-network
+
+  order-db:
+    image: postgres:9.5.10
+    restart: always
+    ports:
+      - "5433:5433"
+    networks:
+      - food-delivery-network
+    environment:
+      POSTGRES_PASSWORD: example
+
+networks:
+  food-delivery-network:
