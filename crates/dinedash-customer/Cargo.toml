@@ -16,6 +16,11 @@ uuid = { version = "1.8.0", features = [
     "macro-diagnostics",
     "serde",
 ] }
+bigdecimal = { version = "0.4.3", features = ["serde"] }
+mobc = "0.8.4"
+mobc-redis = "0.8.2"
+sqlx = { version = "0.7.4", features = ["runtime-tokio", "postgres"] }
+diesel = { version = "2.1.5", features = ["postgres"] }
 
 [profile.release-optimized]
 inherits = "release"
