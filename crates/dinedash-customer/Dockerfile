@@ -7,6 +7,8 @@ RUN apk add musl-dev
 WORKDIR /app
 COPY . .
 RUN cargo build --profile release-optimized
+RUN addgroup -S appgroup && adduser -S customer -G appgroup
+USER customer
 
 # -----------------
 # Runtime Stage
