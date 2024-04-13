@@ -10,7 +10,7 @@ services:
     ports:
       - "8000:8000"
     networks:
-      - food-delivery-network
+      - dinedash-network
     depends_on:
       - order-cache
       - order-db
@@ -20,10 +20,10 @@ services:
     ports:
       - "9000:9000"
     networks:
-      - food-delivery-network
+      - dinedash-network
     depends_on:
       - customer-cache
       - customer-db
 
 networks:
-  food-delivery-network:
+  dinedash-network:

@@ -7,7 +7,7 @@ services:
     ports:
       - "6380:6380"
     networks:
-      - food-delivery-network
+      - dinedash-network
 
   customer-db:
     image: postgres:9.5.10
@@ -15,7 +15,7 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - food-delivery-network
+      - dinedash-network
     environment:
       POSTGRES_USER: "${POSTGRES_USER}"
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
@@ -26,7 +26,7 @@ services:
     ports:
       - "6379:6379"
     networks:
-      - food-delivery-network
+      - dinedash-network
 
   order-db:
     image: postgres:9.5.10
@@ -34,10 +34,10 @@ services:
     ports:
       - "5433:5433"
     networks:
-      - food-delivery-network
+      - dinedash-network
     environment:
       POSTGRES_USER: "${POSTGRES_USER}"
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
 
 networks:
-  food-delivery-network:
+  dinedash-network:
