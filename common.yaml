@@ -17,7 +17,8 @@ services:
     networks:
       - food-delivery-network
     environment:
-      POSTGRES_PASSWORD: example
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
 
   order-cache:
     image: redis:alpine
@@ -35,7 +36,8 @@ services:
     networks:
       - food-delivery-network
     environment:
-      POSTGRES_PASSWORD: example
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
 
 networks:
   food-delivery-network:
