@@ -8,6 +8,7 @@ pub mod routes;
 
 #[tokio::main]
 async fn main() -> io::Result<()> {
+    println!("Server running at {}", config::api::SERVER_ADDRESS);
     api::start().await;
     Ok(())
 }
