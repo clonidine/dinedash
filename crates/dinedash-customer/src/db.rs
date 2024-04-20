@@ -1,15 +1,11 @@
 use dotenv::dotenv;
-use tokio_postgres::{tls::NoTlsStream, Client, Connection, NoTls, Socket};
 
-pub async fn connect() -> anyhow::Result<(Client, Connection<Socket, NoTlsStream>)> {
+pub async fn connect() -> anyhow::Result<sqlx::PgPool> {
     dotenv().ok();
 
-    let user = dotenv::var("POSTGRES_USER")?;
-    let password = dotenv::var("POSTGRES_PASSWORD")?;
+    let db_url = dotenv::var("DATABASE_URL").expect("DATABASE_URL var should be set");
 
-    Ok(tokio_postgres::connect(
-        &format!("host=localhost user={user} password={password}"),
-        NoTls,
-    )
-    .await?)
+    let pool = sqlx::PgPool::connect(&db_url).await?;
+
+    Ok(pool)
 }
