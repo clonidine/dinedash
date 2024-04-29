@@ -1,7 +1,6 @@
-use serde::{Deserialize, Serialize};
-use uuid::Uuid;
+use sqlx::types::Uuid;
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, serde::Serialize, serde::Deserialize, sqlx::FromRow)]
 pub struct Customer {
     name: String,
     id: Uuid,
@@ -11,7 +10,7 @@ impl Customer {
     pub fn new(name: &str) -> Self {
         Self {
             name: name.to_owned(),
-            id: Uuid::new_v4(),
+            id: Uuid::now_v7(),
         }
     }
 
